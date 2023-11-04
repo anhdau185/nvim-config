@@ -1,6 +1,4 @@
-local conform = require "conform"
-
-conform.setup {
+require("conform").setup {
   formatters_by_ft = {
     javascript = { "prettierd" },
     typescript = { "prettierd" },
