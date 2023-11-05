@@ -22,12 +22,6 @@ M.general = {
 
 M.tabufline = {
   n = {
-    ["<C-w>"] = {
-      function()
-        require("nvchad.tabufline").close_buffer()
-      end,
-      "Close buffer",
-    },
     ["<leader>bo"] = {
       function()
         require("nvchad.tabufline").closeOtherBufs()
