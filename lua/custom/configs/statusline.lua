@@ -56,7 +56,7 @@ end
 
 local function file_encoding()
   local encoding = vim.bo[stbufnr()].fileencoding
-  return encoding == "" and "" or ("%#St_FileEncoding#" .. " " .. encoding .. " ")
+  return encoding == "" and "" or ("%#St_FileEncoding#" .. " " .. encoding .. "  ")
 end
 
 local function cursor_position(sep_style)

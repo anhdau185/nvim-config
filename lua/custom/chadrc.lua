@@ -80,7 +80,7 @@ M.ui = {
   },
   statusline = require("custom.configs.statusline").get_statusline {
     theme = "default",
-    style = "arrow",
+    style = "block",
   },
 }
 
