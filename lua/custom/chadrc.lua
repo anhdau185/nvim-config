@@ -33,11 +33,6 @@ M.ui = {
     },
   },
   hl_override = {
-    -- use this highlight group in your iTerm color profile instead
-    -- Cursor = {
-    --   fg = "#1e1e2e",
-    --   bg = "#f9edeb",
-    -- },
     Visual = {
       bg = "#6d5f7c",
     },
