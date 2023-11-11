@@ -131,7 +131,8 @@ local plugins = {
   },
   {
     "NvChad/nvim-colorizer.lua",
-    enabled = false,
+    event = "VeryLazy",
+    init = false,
   },
   {
     "NvChad/nvterm",
