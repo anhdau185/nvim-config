@@ -10,6 +10,7 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
       height = 0.88,
     },
     wrap_results = true,
+    prompt_prefix = "", -- no prefix icon
   },
 })
 
