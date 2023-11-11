@@ -29,7 +29,7 @@ local function mode(sep_style)
 
   local m = vim.api.nvim_get_mode().mode
   local sep_r = sep_icons[sep_style].right
-  local current_mode = "%#" .. modes[m][2] .. "#" .. "  " .. modes[m][1] .. gen_extra_space(sep_style)
+  local current_mode = "%#" .. modes[m][2] .. "#" .. " " .. modes[m][1] .. gen_extra_space(sep_style)
   local mode_sep1 = "%#" .. modes[m][2] .. "Sep" .. "#" .. sep_r
   local mode_sep2 = "%#ST_EmptySpace#" .. sep_r
 
