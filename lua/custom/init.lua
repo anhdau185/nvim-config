@@ -33,6 +33,10 @@ vim.api.nvim_create_autocmd("VimEnter", {
         vim.api.nvim_buf_delete(last_buf, { force = true })
       end
     end)
+
+    vim.schedule(function()
+      vim.cmd "packadd cfilter" -- lazy-load cfilter to enhance quickfix list
+    end)
   end,
 })
 
