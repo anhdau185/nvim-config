@@ -19,7 +19,7 @@ M.ui = {
       bg = "#474656",
     },
     GitSignsChange = {
-      fg = "#cba6f7",
+      fg = "#f9e2af",
       bg = "NONE",
     },
 
@@ -48,11 +48,11 @@ M.ui = {
     },
     DiffChange = {
       fg = "NONE",
-      bg = "#331a5b",
+      bg = "#48350b",
     },
     DiffText = {
       fg = "NONE",
-      bg = "#46237D",
+      bg = "#825f13",
     },
     DiffDelete = {
       fg = "NONE",
