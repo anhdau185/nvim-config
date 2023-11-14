@@ -10,10 +10,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
   callback = function(data)
     vim.schedule(function()
       local utils = require "custom.utils"
-      local is_dir = utils.is_dir(data.file)
 
       -- open nvimtree and telescope for file browsing if neovim was opened in a directory
-      if is_dir then
+      if utils.is_dir(data.file) then
         require("nvim-tree.api").tree.open()
         require("telescope.builtin").find_files()
         return
