@@ -18,17 +18,11 @@ M.ui = {
       fg = "#8bc2f0",
       bg = "#474656",
     },
-
-    -- for both GitSignsChange and GitSignsChangedelete
-    GitSignsChange = {
+    GitSignsChange = { -- also for GitSignsChangedelete
       fg = "#eed49f",
       bg = "NONE",
     },
-
-    -- for both GitSignsDelete and GitSignsTopdelete, whose hunks are
-    -- represented with a character, not a vertical bar like Add or Change
-    -- so `bold = true` is important here to make the character more noticeable
-    GitSignsDelete = {
+    GitSignsDelete = { -- also for GitSignsTopdelete
       fg = "#ed8796",
       bg = "NONE",
       bold = true,
