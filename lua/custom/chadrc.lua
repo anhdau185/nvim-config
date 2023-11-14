@@ -29,9 +29,29 @@ M.ui = {
     -- represented with a character, not a vertical bar like Add or Change
     -- so `bold = true` is important here to make the character more noticeable
     GitSignsDelete = {
-      fg = "#f38ba8",
+      fg = "#ed8796",
       bg = "NONE",
       bold = true,
+    },
+    DiagnosticUnderlineOk = {
+      sp = "#a6e3a1",
+      undercurl = true,
+    },
+    DiagnosticUnderlineInfo = {
+      sp = "#89b4fa",
+      undercurl = true,
+    },
+    DiagnosticUnderlineHint = {
+      sp = "#cba6f7",
+      undercurl = true,
+    },
+    DiagnosticUnderlineWarn = {
+      sp = "#f9e2af",
+      undercurl = true,
+    },
+    DiagnosticUnderlineError = {
+      sp = "#f38ba8",
+      undercurl = true,
     },
   },
   hl_override = {
