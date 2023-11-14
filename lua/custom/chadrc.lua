@@ -18,8 +18,10 @@ M.ui = {
       fg = "#8bc2f0",
       bg = "#474656",
     },
+
+    -- for both GitSignsChange and GitSignsChangedelete
     GitSignsChange = {
-      fg = "#f9e2af",
+      fg = "#eed49f",
       bg = "NONE",
     },
 
