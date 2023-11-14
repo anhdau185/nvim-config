@@ -65,6 +65,50 @@ M.telescope = {
   },
 }
 
+M.gitsigns = {
+  n = {
+    -- Navigation through hunks
+    ["<leader>h["] = {
+      function()
+        package.loaded.gitsigns.prev_hunk()
+      end,
+      "Jump to prev hunk",
+    },
+    ["<leader>h]"] = {
+      function()
+        package.loaded.gitsigns.next_hunk()
+      end,
+      "Jump to next hunk",
+    },
+
+    -- Actions
+    ["<leader>hp"] = {
+      function()
+        package.loaded.gitsigns.preview_hunk()
+      end,
+      "Preview hunk",
+    },
+    ["<leader>hr"] = {
+      function()
+        package.loaded.gitsigns.reset_hunk()
+      end,
+      "Reset hunk",
+    },
+    ["<leader>hs"] = {
+      function()
+        package.loaded.gitsigns.stage_hunk()
+      end,
+      "Stage hunk",
+    },
+    ["gB"] = {
+      function()
+        package.loaded.gitsigns.blame_line { full = true }
+      end,
+      "Hover-blame line",
+    },
+  },
+}
+
 M.disabled = {
   n = {
     -- general
@@ -80,6 +124,14 @@ M.disabled = {
     ["<A-i>"] = "",
     ["<A-h>"] = "",
     ["<A-v>"] = "",
+
+    -- gitsigns
+    ["]c"] = "",
+    ["[c"] = "",
+    ["<leader>rh"] = "",
+    ["<leader>ph"] = "",
+    ["<leader>gb"] = "",
+    ["<leader>td"] = "",
   },
 
   t = {
