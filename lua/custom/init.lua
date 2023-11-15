@@ -8,6 +8,12 @@ vim.opt.fillchars:append { diff = "╱" }
 
 -- remap keys
 vim.keymap.set({ "n", "x", "o" }, "$", "g_", { desc = "" })
+vim.keymap.set({ "n" }, "<C-g>", function()
+  local utils = require "custom.utils"
+  local rel_path = utils.path_to_current_buf()
+  local ln, col = utils.get_cursor_pos()
+  print(rel_path .. ":" .. ln .. ":" .. col)
+end, { desc = "" })
 
 -- custom neovim startup stuff
 vim.api.nvim_create_autocmd("VimEnter", {
