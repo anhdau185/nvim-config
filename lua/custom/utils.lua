@@ -11,6 +11,14 @@ M.path_to_current_buf = function()
   return plenary.path:new(buf_name):make_relative()
 end
 
+M.get_cursor_pos = function()
+  local ln, col = table.unpack(vim.api.nvim_win_get_cursor(0))
+  local is_blank_line = vim.api.nvim_get_current_line() == ""
+  local one_based_col = (is_blank_line and 0) or col + 1 -- original col is 0-based, this converts it to 1-based in a non-blank line
+
+  return ln, one_based_col
+end
+
 M.get_filetype = function(buf)
   local ft = vim.api.nvim_buf_get_option(buf, "filetype")
 
