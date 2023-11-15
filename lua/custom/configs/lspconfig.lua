@@ -3,9 +3,17 @@ local on_attach = configs.on_attach
 local capabilities = configs.capabilities
 
 local lspconfig = require "lspconfig"
+local NODE_MODULES_PATTERN = "node_modules/"
 
 -- set up JS/TS language server
 lspconfig.tsserver.setup {
+  root_dir = function(filename, bufnr)
+    local inside_node_modules = string.find(filename, NODE_MODULES_PATTERN)
+    if inside_node_modules then -- avoid starting language server inside node_modules
+      return nil
+    end
+    return require("lspconfig.server_configurations.tsserver").default_config.root_dir(filename, bufnr)
+  end,
   capabilities = capabilities,
   on_attach = on_attach,
   init_options = {
@@ -17,6 +25,13 @@ lspconfig.tsserver.setup {
 
 -- set up eslint-lsp
 lspconfig.eslint.setup {
+  root_dir = function(filename, bufnr)
+    local inside_node_modules = string.find(filename, NODE_MODULES_PATTERN)
+    if inside_node_modules then -- avoid linting inside node_modules due to performance issues
+      return nil
+    end
+    return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename, bufnr)
+  end,
   capabilities = capabilities,
   on_attach = on_attach,
 
