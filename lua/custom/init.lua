@@ -1,8 +1,12 @@
+table.unpack = table.unpack or unpack -- Lua 5.1 compatibility
+
 vim.opt.number = false
 vim.opt.relativenumber = true
 vim.opt.list = true
 vim.opt.listchars:append { tab = "→ ", space = "·", trail = "·" }
 vim.opt.fillchars:append { diff = "╱" }
+
+-- remap keys
 vim.keymap.set({ "n", "x", "o" }, "$", "g_", { desc = "" })
 
 -- custom neovim startup stuff
