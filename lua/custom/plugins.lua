@@ -120,6 +120,12 @@ local plugins = {
     end,
   },
   {
+    "hrsh7th/nvim-cmp",
+    opts = function()
+      return require "custom.configs.cmp"
+    end,
+  },
+  {
     "folke/which-key.nvim",
     init = function()
       vim.opt.timeout = true
