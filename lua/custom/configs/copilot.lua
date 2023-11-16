@@ -4,8 +4,9 @@ local opts = {
     auto_trigger = true,
     debounce = 50,
     keymap = {
-      accept = "<C-l>",
-      accept_word = "<C-k>",
+      accept = "<Tab>",
+      accept_word = "<C-l>",
+      dismiss = "<S-Tab>",
     },
   },
 }
