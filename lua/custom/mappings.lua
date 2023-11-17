@@ -80,9 +80,35 @@ M.lsgconfig = {
 
 M.telescope = {
   n = {
-    ["dx"] = { "<cmd> Telescope diagnostics bufnr=0 <CR>", "Document diagnostics" },
-    ["gr"] = { "<cmd> Telescope lsp_references include_current_line=true <CR>", "Find all references" },
-    ["gd"] = { "<cmd> Telescope lsp_definitions <CR>", "Find definition" },
+    ["dx"] = {
+      function()
+        require("telescope.builtin").diagnostics { bufnr = 0 }
+      end,
+      "Document diagnostics",
+    },
+    ["gd"] = {
+      function()
+        require("telescope.builtin").lsp_definitions()
+      end,
+      "Find definition",
+    },
+    ["gr"] = {
+      function()
+        require("telescope.builtin").lsp_references {
+          include_current_line = true,
+        }
+      end,
+      "Find all references",
+    },
+    ["<leader>gr"] = {
+      function()
+        require("telescope.builtin").lsp_references {
+          default_text = require("custom.utils").path_to_current_buf(),
+          include_current_line = false,
+        }
+      end,
+      "Find references within current document",
+    },
 
     -- clear all unimportant local marks before showing the mark list to make it cleaner and more readable
     ["<leader>ma"] = {
