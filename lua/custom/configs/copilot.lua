@@ -5,8 +5,9 @@ local opts = {
     debounce = 50,
     keymap = {
       accept = "<Tab>",
+      accept_line = "<C-]>",
       accept_word = "<C-l>",
-      dismiss = "<S-Tab>",
+      dismiss = "<C-h>",
     },
   },
 }
