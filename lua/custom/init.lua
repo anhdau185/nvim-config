@@ -48,10 +48,10 @@ vim.api.nvim_create_autocmd("VimEnter", {
       vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
         underline = true,
         virtual_text = true,
-        severity_sort = true,
         signs = false,
         update_in_insert = false,
       })
+      vim.diagnostic.config { severity_sort = true }
     end)
 
     vim.schedule(function()
