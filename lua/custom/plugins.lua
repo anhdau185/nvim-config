@@ -17,7 +17,14 @@ local plugins = {
             end,
           },
         },
-        opts = require "custom.configs.mason-lspconfig",
+        opts = {
+          ensure_installed = {
+            "lua_ls",
+            "tsserver",
+            "eslint",
+            "rust_analyzer",
+          },
+        },
       },
       -- rust language server and other development tools,
       -- will be set up in the nvim-lspconfig setup
