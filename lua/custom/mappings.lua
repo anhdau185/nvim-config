@@ -22,11 +22,41 @@ M.general = {
 
 M.tabufline = {
   n = {
+    -- close multiple buffers
     ["<leader>bo"] = {
       function()
         require("nvchad.tabufline").closeOtherBufs()
       end,
       "Close other buffers",
+    },
+    ["<leader>br"] = {
+      function()
+        require("nvchad.tabufline").closeBufs_at_direction "right"
+      end,
+      "Close buffers to the right",
+    },
+    ["<leader>ba"] = {
+      function()
+        require("nvchad.tabufline").closeAllBufs()
+        vim.schedule(function()
+          require("telescope.builtin").find_files() -- open find_files prompt after closing all buffers
+        end)
+      end,
+      "Close all buffers",
+    },
+
+    -- move current buffer
+    ["<leader>bh"] = {
+      function()
+        require("nvchad.tabufline").move_buf(-1)
+      end,
+      "Move current buffer to the left",
+    },
+    ["<leader>bl"] = {
+      function()
+        require("nvchad.tabufline").move_buf(1)
+      end,
+      "Move current buffer to the right",
     },
   },
 }
