@@ -113,8 +113,11 @@ M.disabled = {
   n = {
     -- general
     ["<leader>n"] = "",
+    ["<leader>rn"] = "",
+    ["<leader>b"] = "",
 
     -- lspconfig
+    ["<leader>q"] = "",
     ["<leader>lf"] = "",
     ["K"] = "",
 
