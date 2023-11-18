@@ -32,4 +32,13 @@ M.get_buf_content = function(buf)
   return table.concat(vim.api.nvim_buf_get_lines(buf, 0, -1, false), "\n")
 end
 
+M.is_proj_whitelisted = function()
+  local proj_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+
+  if proj_name == nil or proj_name == "" then
+    return false
+  end
+  return vim.tbl_contains(require("custom.projects").WHITELIST, proj_name)
+end
+
 return M

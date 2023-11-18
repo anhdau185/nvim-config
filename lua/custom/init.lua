@@ -18,6 +18,7 @@ end, { desc = "" })
 -- custom neovim startup stuff
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function(data)
+    -- initial workspace setup
     vim.schedule(function()
       local utils = require "custom.utils"
 
@@ -29,8 +30,11 @@ vim.api.nvim_create_autocmd("VimEnter", {
       end
 
       -- close the redundant auto-generated buffer if neovim was opened with files
+      -- only if the project is whitelisted in custom.projects:WHITELIST
       local bufs = vim.api.nvim_list_bufs()
-      if #bufs == 0 then
+      local proj_excluded = not utils.is_proj_whitelisted()
+
+      if proj_excluded or #bufs == 0 then
         return
       end
 
@@ -43,8 +47,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
       end
     end)
 
+    -- lazy-load necessary vim packages
     vim.schedule(function()
-      vim.cmd "packadd cfilter" -- lazy-load cfilter to enhance quickfix list
+      vim.cmd "packadd cfilter" -- for filtering quickfix list items
     end)
   end,
 })
