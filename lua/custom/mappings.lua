@@ -3,10 +3,23 @@ local M = {}
 M.general = {
   n = {
     -- navigate tmux panes in normal mode
-    ["<C-h>"] = { "<cmd> TmuxNavigateLeft <CR>", "Window left" },
-    ["<C-l>"] = { "<cmd> TmuxNavigateRight <CR>", "Window right" },
-    ["<C-j>"] = { "<cmd> TmuxNavigateDown <CR>", "Window down" },
-    ["<C-k>"] = { "<cmd> TmuxNavigateUp <CR>", "Window up" },
+    ["<C-h>"] = { "<cmd>TmuxNavigateLeft<CR>", "Window left" },
+    ["<C-l>"] = { "<cmd>TmuxNavigateRight<CR>", "Window right" },
+    ["<C-j>"] = { "<cmd>TmuxNavigateDown<CR>", "Window down" },
+    ["<C-k>"] = { "<cmd>TmuxNavigateUp<CR>", "Window up" },
+
+    -- navigate tabpages
+    ["<leader>tp"] = { "<cmd>tabprevious<CR>", "Previous tab" },
+    ["<leader>tn"] = { "<cmd>tabnext<CR>", "Next tab" },
+    ["<leader>tc"] = { "<cmd>tabclose<CR>", "Close tab" },
+    ["<leader>to"] = {
+      function()
+        if #vim.api.nvim_list_tabpages() > 1 then
+          vim.cmd "tabnext 1 | tabonly" -- close any open secondary tabs before quitting
+        end
+      end,
+      "Close all tabs but primary tab",
+    },
 
     -- copy relative path to current file
     ["<leader>cp"] = {
@@ -176,6 +189,9 @@ M.disabled = {
     ["<leader>q"] = "",
     ["<leader>lf"] = "",
     ["K"] = "",
+
+    -- telescope
+    ["<leader>th"] = "",
 
     -- nvterm
     ["<leader>h"] = "",
