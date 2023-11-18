@@ -1,4 +1,5 @@
 local default_opts = require "plugins.configs.telescope"
+local actions = require "telescope.actions"
 
 local opts = vim.tbl_deep_extend("force", default_opts, {
   defaults = {
@@ -6,11 +7,31 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
       horizontal = {
         preview_width = 0.5,
       },
-      width = 0.92,
-      height = 0.88,
+      width = 0.95,
+      height = 0.92,
     },
     wrap_results = true,
     prompt_prefix = "", -- no prefix icon
+
+    -- all defaults: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua#L133
+    mappings = {
+      i = {
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+
+        ["<C-u>"] = actions.preview_scrolling_up,
+        ["<C-d>"] = actions.preview_scrolling_down,
+        ["<C-h>"] = actions.preview_scrolling_left,
+        ["<C-l>"] = actions.preview_scrolling_right,
+
+        ["<C-e>"] = { "<c-s-w>", type = "command" },
+        ["<Esc>"] = actions.close,
+      },
+    },
+  },
+  pickers = {
+    lsp_references = { show_line = false },
+    lsp_definitions = { show_line = false },
   },
 })
 
