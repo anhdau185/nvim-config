@@ -1,6 +1,7 @@
 local M = {}
 
 M.WHITELIST = {
+  "nvim",
   "frontend-core",
   "employment-hero",
 }
