@@ -99,6 +99,12 @@ M.telescope = {
       end,
       "Document diagnostics",
     },
+    ["gt"] = {
+      function()
+        require("telescope.builtin").git_status()
+      end,
+      "Git status",
+    },
     ["gd"] = {
       function()
         require("telescope.builtin").lsp_definitions()
@@ -192,6 +198,7 @@ M.disabled = {
 
     -- telescope
     ["<leader>th"] = "",
+    ["<leader>gt"] = "",
 
     -- nvterm
     ["<leader>h"] = "",
