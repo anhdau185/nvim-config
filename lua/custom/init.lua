@@ -60,3 +60,11 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
     require("nvim-tree.api").tree.close()
   end,
 })
+
+vim.api.nvim_create_user_command("Q", function()
+  if #vim.api.nvim_list_tabpages() > 1 then
+    vim.cmd "tabnext 1 | tabonly | quitall" -- close any open secondary tabs before quitting
+  else
+    vim.cmd "quitall"
+  end
+end, {})
