@@ -1,11 +1,21 @@
+-- config for lsp diagnostics
+vim.schedule(function()
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    virtual_text = true,
+    signs = false,
+    update_in_insert = false,
+  })
+  vim.diagnostic.config { severity_sort = true }
+end)
+
+-- set up language servers
 local configs = require "plugins.configs.lspconfig" -- this also sets up the lua-language-server
 local on_attach = configs.on_attach
 local capabilities = configs.capabilities
-
 local lspconfig = require "lspconfig"
 local NODE_MODULES_PATTERN = "node_modules/"
 
--- set up JS/TS language server
 lspconfig.tsserver.setup {
   root_dir = function(filename, bufnr)
     local inside_node_modules = string.find(filename, NODE_MODULES_PATTERN)
@@ -23,7 +33,6 @@ lspconfig.tsserver.setup {
   },
 }
 
--- set up eslint-lsp
 lspconfig.eslint.setup {
   root_dir = function(filename, bufnr)
     local inside_node_modules = string.find(filename, NODE_MODULES_PATTERN)
@@ -44,7 +53,6 @@ lspconfig.eslint.setup {
   },
 }
 
--- set up Rust development tools
 require("rust-tools").setup {
   server = {
     standalone = true,

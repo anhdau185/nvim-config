@@ -43,17 +43,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
       end
     end)
 
-    -- disable inline diagnostics signs to reduce visual noise in the signcolumn
-    vim.schedule(function()
-      vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-        underline = true,
-        virtual_text = true,
-        signs = false,
-        update_in_insert = false,
-      })
-      vim.diagnostic.config { severity_sort = true }
-    end)
-
     vim.schedule(function()
       vim.cmd "packadd cfilter" -- lazy-load cfilter to enhance quickfix list
     end)
