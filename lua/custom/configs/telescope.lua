@@ -7,7 +7,7 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
       horizontal = {
         preview_width = 0.5,
       },
-      width = 0.95,
+      width = 0.96,
       height = 0.92,
     },
     wrap_results = true,
