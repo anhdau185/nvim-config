@@ -63,13 +63,13 @@ M.tabufline = {
       function()
         require("nvchad.tabufline").move_buf(-1)
       end,
-      "Move current buffer to the left",
+      "Move buffer to the left",
     },
     ["<leader>bl"] = {
       function()
         require("nvchad.tabufline").move_buf(1)
       end,
-      "Move current buffer to the right",
+      "Move buffer to the right",
     },
   },
 }
@@ -126,7 +126,7 @@ M.telescope = {
           include_current_line = false,
         }
       end,
-      "Find references within current document",
+      "Find references within document",
     },
 
     -- clear all unimportant local marks before showing the mark list to make it cleaner and more readable
