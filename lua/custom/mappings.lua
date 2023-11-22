@@ -74,7 +74,7 @@ M.tabufline = {
   },
 }
 
-M.lsgconfig = {
+M.lspconfig = {
   n = {
     ["gh"] = {
       function()
@@ -82,11 +82,26 @@ M.lsgconfig = {
       end,
       "LSP hover",
     },
+    ["ga"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "LSP code action",
+    },
     ["gH"] = {
       function()
         vim.diagnostic.open_float { border = "single" }
       end,
       "Floating diagnostic",
+    },
+  },
+
+  v = {
+    ["<leader>ga"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "LSP code action",
     },
   },
 }
@@ -194,6 +209,7 @@ M.disabled = {
     -- lspconfig
     ["<leader>q"] = "",
     ["<leader>lf"] = "",
+    ["<leader>ca"] = "",
     ["K"] = "",
 
     -- telescope
@@ -214,6 +230,11 @@ M.disabled = {
     ["<leader>ph"] = "",
     ["<leader>gb"] = "",
     ["<leader>td"] = "",
+  },
+
+  v = {
+    -- lspconfig
+    ["<leader>ca"] = "",
   },
 
   t = {
