@@ -108,17 +108,29 @@ M.lspconfig = {
 
 M.telescope = {
   n = {
-    ["dx"] = {
-      function()
-        require("telescope.builtin").diagnostics { bufnr = 0 }
-      end,
-      "Document diagnostics",
-    },
     ["gt"] = {
       function()
         require("telescope.builtin").git_status()
       end,
       "Git status",
+    },
+    ["gm"] = {
+      function()
+        require("telescope.builtin").git_commits()
+      end,
+      "Git commits",
+    },
+    ["gs"] = {
+      function()
+        require("telescope.builtin").git_stash()
+      end,
+      "Git stash",
+    },
+    ["dx"] = {
+      function()
+        require("telescope.builtin").diagnostics { bufnr = 0 }
+      end,
+      "Document diagnostics",
     },
     ["gd"] = {
       function()
@@ -215,6 +227,8 @@ M.disabled = {
     -- telescope
     ["<leader>th"] = "",
     ["<leader>gt"] = "",
+    ["<leader>cm"] = "",
+    ["<leader>pt"] = "",
 
     -- nvterm
     ["<leader>h"] = "",
