@@ -29,7 +29,11 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
       },
     },
   },
+
   pickers = {
+    find_files = {
+      find_command = { "fd", "--type", "file", "--hidden", "--follow", "--exclude", "**/{.git,node_modules}/**" },
+    },
     lsp_references = { show_line = false },
     lsp_definitions = { show_line = false },
   },
