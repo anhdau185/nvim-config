@@ -34,6 +34,10 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
     find_files = {
       find_command = { "fd", "--type", "file", "--hidden", "--follow", "--exclude", "**/{.git,node_modules}/**" },
     },
+    live_grep = {
+      additional_args = { "--hidden", "--follow" },
+      glob_pattern = { "!**/{.git,node_modules}/**" },
+    },
     lsp_references = { show_line = false },
     lsp_definitions = { show_line = false },
   },
