@@ -4,6 +4,34 @@ local actions = require "telescope.actions"
 local EXCLUDE_PATTERN = "**/{.git,node_modules}/**"
 local RG_GLOB_PATTERN = "!" .. EXCLUDE_PATTERN
 
+-- all defaults: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua#L133
+local mappings = {
+  ["<C-k>"] = actions.move_selection_previous,
+  ["<C-j>"] = actions.move_selection_next,
+  ["<C-h>"] = actions.preview_scrolling_left,
+  ["<C-l>"] = actions.preview_scrolling_right,
+  ["<C-e>"] = actions.close,
+
+  -- Switch to live_grep_args retaining the current prompt
+  ["<C-g>"] = function(prompt_bufnr)
+    local current_picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+    local prompt = vim.trim(current_picker:_get_prompt())
+
+    if prompt == "" then
+      return
+    end
+
+    local rg_args = " -. -L -g " .. RG_GLOB_PATTERN .. " " -- equivalent to: --hidden --follow --glob "pattern"
+    prompt = require("telescope-live-grep-args.helpers").quote(prompt, { quote_char = '"' })
+    prompt = prompt .. rg_args
+
+    vim.schedule(function()
+      require("telescope").extensions.live_grep_args.live_grep_args { default_text = prompt }
+    end)
+    actions.close(prompt_bufnr)
+  end,
+}
+
 local opts = vim.tbl_deep_extend("force", default_opts, {
   defaults = {
     layout_config = {
@@ -15,23 +43,9 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
     },
     wrap_results = true,
     prompt_prefix = "", -- no prefix icon
-
-    -- all defaults: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua#L133
     mappings = {
-      i = {
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-h>"] = actions.preview_scrolling_left,
-        ["<C-l>"] = actions.preview_scrolling_right,
-        ["<C-e>"] = actions.close,
-      },
-      n = {
-        ["<C-k>"] = actions.move_selection_previous,
-        ["<C-j>"] = actions.move_selection_next,
-        ["<C-h>"] = actions.preview_scrolling_left,
-        ["<C-l>"] = actions.preview_scrolling_right,
-        ["<C-e>"] = actions.close,
-      },
+      i = mappings,
+      n = mappings,
     },
   },
 
@@ -47,5 +61,8 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
     lsp_definitions = { show_line = false },
   },
 })
+
+-- in order to load_extension this at lua/plugins/init.lua:247
+table.insert(opts.extensions_list, "live_grep_args")
 
 return opts
