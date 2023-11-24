@@ -1,6 +1,9 @@
 local default_opts = require "plugins.configs.telescope"
 local actions = require "telescope.actions"
 
+local EXCLUDE_PATTERN = "**/{.git,node_modules}/**"
+local RG_GLOB_PATTERN = "!" .. EXCLUDE_PATTERN
+
 local opts = vim.tbl_deep_extend("force", default_opts, {
   defaults = {
     layout_config = {
@@ -34,11 +37,11 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
 
   pickers = {
     find_files = {
-      find_command = { "fd", "--type", "file", "--hidden", "--follow", "--exclude", "**/{.git,node_modules}/**" },
+      find_command = { "fd", "--type", "file", "--hidden", "--follow", "--exclude", EXCLUDE_PATTERN },
     },
     live_grep = {
       additional_args = { "--hidden", "--follow" },
-      glob_pattern = { "!**/{.git,node_modules}/**" },
+      glob_pattern = { RG_GLOB_PATTERN },
     },
     lsp_references = { show_line = false },
     lsp_definitions = { show_line = false },
