@@ -18,14 +18,16 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
       i = {
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-j>"] = actions.move_selection_next,
-
-        ["<C-u>"] = actions.preview_scrolling_up,
-        ["<C-d>"] = actions.preview_scrolling_down,
         ["<C-h>"] = actions.preview_scrolling_left,
         ["<C-l>"] = actions.preview_scrolling_right,
-
-        ["<C-e>"] = { "<c-s-w>", type = "command" },
-        ["<Esc>"] = actions.close,
+        ["<C-e>"] = actions.close,
+      },
+      n = {
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-h>"] = actions.preview_scrolling_left,
+        ["<C-l>"] = actions.preview_scrolling_right,
+        ["<C-e>"] = actions.close,
       },
     },
   },
