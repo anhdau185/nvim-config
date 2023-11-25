@@ -155,6 +155,12 @@ M.telescope = {
       end,
       "Find references within document",
     },
+    ["<leader>fa"] = {
+      function()
+        require("telescope.builtin").find_files { no_ignore = true }
+      end,
+      "Find all files",
+    },
 
     -- clear all unimportant local marks before showing the mark list to make it cleaner and more readable
     ["<leader>ma"] = {

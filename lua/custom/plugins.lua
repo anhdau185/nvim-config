@@ -96,6 +96,7 @@ local plugins = {
   },
   { -- override default telescope opts
     "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-telescope/telescope-live-grep-args.nvim" },
     opts = function()
       return require "custom.configs.telescope"
     end,
