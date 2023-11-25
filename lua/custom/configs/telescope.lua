@@ -67,7 +67,7 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
   },
 })
 
--- in order to for this extension to be loaded at lua/plugins/init.lua:247
+-- in order for this extension to be loaded at lua/plugins/init.lua:247
 table.insert(opts.extensions_list, "live_grep_args")
 
 return opts
