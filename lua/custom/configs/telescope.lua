@@ -105,6 +105,16 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
         },
       },
     },
+    git_status = {
+      mappings = {
+        i = {
+          ["<C-s>"] = actions.git_staging_toggle,
+        },
+        n = {
+          ["s"] = actions.git_staging_toggle,
+        },
+      },
+    },
     lsp_references = { show_line = false },
     lsp_definitions = { show_line = false },
   },
