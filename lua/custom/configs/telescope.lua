@@ -20,7 +20,7 @@ local common_mappings = {
     end
 
     local rg_search_pattern = require("telescope-live-grep-args.helpers").quote(prompt, { quote_char = '"' }) -- only quoted patterns work
-    local rg_default_args = " -L -. -g " .. RG_GLOB_PATTERN .. " " -- equivalent to: --follow --hidden --glob !**/{.git,node_modules}/**
+    local rg_default_args = string.format(" -L -. -g %s ", RG_GLOB_PATTERN) -- equivalent to: --follow --hidden --glob !**/{.git,node_modules}/**
     local new_prompt = rg_search_pattern .. rg_default_args
 
     vim.schedule(function()
