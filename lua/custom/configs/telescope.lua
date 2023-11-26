@@ -20,7 +20,7 @@ local common_mappings = {
     end
 
     local rg_search_pattern = require("telescope-live-grep-args.helpers").quote(prompt, { quote_char = '"' }) -- pattern should be quoted in case of whitespace
-    local rg_default_args = " -. -L -g " .. RG_GLOB_PATTERN .. " " -- equivalent to: --hidden --follow --glob !**/{.git,node_modules}/**
+    local rg_default_args = " -L -. -g " .. RG_GLOB_PATTERN .. " " -- equivalent to: --follow --hidden --glob !**/{.git,node_modules}/**
     local new_prompt = rg_search_pattern .. rg_default_args
 
     vim.schedule(function()
@@ -49,7 +49,7 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
 
   pickers = {
     live_grep = {
-      additional_args = { "--hidden", "--follow" },
+      additional_args = { "--follow", "--hidden" },
       glob_pattern = { RG_GLOB_PATTERN },
     },
     lsp_references = { show_line = false },
