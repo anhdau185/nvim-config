@@ -2,15 +2,6 @@ local actions = require "telescope.actions"
 local default_opts = require "plugins.configs.telescope"
 local RG_GLOB_PATTERN = "!**/{.git,node_modules}/**"
 
--- all defaults: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua#L133
-local common_mappings = {
-  ["<C-k>"] = actions.move_selection_previous,
-  ["<C-j>"] = actions.move_selection_next,
-  ["<C-h>"] = actions.preview_scrolling_left,
-  ["<C-l>"] = actions.preview_scrolling_right,
-  ["<C-e>"] = actions.close,
-}
-
 -- Switch to "Find all files" with current prompt retained
 local function switch_to_find_all_files(prompt_bufnr)
   local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
@@ -76,9 +67,21 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
       end
       return string.format("%s(%s)", status_icon, results_count)
     end,
-    mappings = {
-      i = common_mappings,
-      n = common_mappings,
+    mappings = { -- all defaults: https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/mappings.lua#L133
+      i = {
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-h>"] = actions.preview_scrolling_left,
+        ["<C-l>"] = actions.preview_scrolling_right,
+        ["<C-e>"] = actions.close,
+      },
+      n = {
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-h>"] = actions.preview_scrolling_left,
+        ["<C-l>"] = actions.preview_scrolling_right,
+        ["<C-e>"] = actions.close,
+      },
     },
   },
 
