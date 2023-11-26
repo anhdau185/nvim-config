@@ -5,6 +5,7 @@ M.WHITELIST = {
   "nvim",
   "frontend-core",
   "employment-hero",
+  "ipsniffer",
 }
 
 return M
