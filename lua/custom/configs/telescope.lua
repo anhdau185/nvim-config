@@ -20,7 +20,7 @@ local common_mappings = {
     end
 
     local rg_search_pattern = require("telescope-live-grep-args.helpers").quote(prompt, { quote_char = '"' }) -- only quoted patterns work
-    local rg_default_args = string.format(" -L -. -g %s ", RG_GLOB_PATTERN) -- equivalent to: --follow --hidden --glob !**/{.git,node_modules}/**
+    local rg_default_args = string.format(" -g %s -. -L ", RG_GLOB_PATTERN) -- equivalent to: --glob !**/{.git,node_modules}/** --hidden --follow
     local new_prompt = rg_search_pattern .. rg_default_args
 
     vim.schedule(function()
@@ -42,18 +42,17 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
     wrap_results = true,
     prompt_prefix = "", -- no prefix icon
     get_status_text = function(picker, opts) -- how prompt counter should be displayed
-      local xx = (picker.stats.processed or 0) - (picker.stats.filtered or 0)
-      local yy = picker.stats.processed or 0
+      local results_count = (picker.stats.processed or 0) - (picker.stats.filtered or 0)
       local status_icon = ""
 
       if opts and not opts.completed then
         status_icon = "*"
       end
 
-      if xx == 0 and yy == 0 then
+      if results_count == 0 then
         return status_icon
       end
-      return string.format("%s(%s)", status_icon, xx)
+      return string.format("%s(%s)", status_icon, results_count)
     end,
     mappings = {
       i = common_mappings,
@@ -63,8 +62,8 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
 
   pickers = {
     live_grep = {
-      additional_args = { "--follow", "--hidden" },
       glob_pattern = { RG_GLOB_PATTERN },
+      additional_args = { "--hidden", "--follow" },
     },
     lsp_references = { show_line = false },
     lsp_definitions = { show_line = false },
