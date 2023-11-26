@@ -12,7 +12,8 @@ vim.keymap.set({ "n" }, "<C-g>", function()
   local utils = require "custom.utils"
   local rel_path = utils.path_to_current_buf()
   local ln, col = utils.get_cursor_pos()
-  print(rel_path .. ":" .. ln .. ":" .. col)
+  local display_path = string.format("%s:%s:%s", rel_path, ln, col)
+  print(display_path)
 end, { desc = "" })
 
 -- custom neovim startup stuff
