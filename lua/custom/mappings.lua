@@ -157,7 +157,18 @@ M.telescope = {
     },
     ["<leader>fa"] = {
       function()
-        require("telescope.builtin").find_files { no_ignore = true }
+        require("telescope.builtin").find_files {
+          find_command = {
+            "fd",
+            "--type",
+            "file",
+            "--follow",
+            "--hidden",
+            "--no-ignore",
+            "--exclude",
+            "**/{.git,node_modules}/**",
+          },
+        }
       end,
       "Find all files",
     },
