@@ -9,48 +9,48 @@ local common_mappings = {
   ["<C-h>"] = actions.preview_scrolling_left,
   ["<C-l>"] = actions.preview_scrolling_right,
   ["<C-e>"] = actions.close,
-
-  -- Switch to "Find all files" with current prompt retained
-  ["<C-a>"] = function(prompt_bufnr)
-    local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
-    local prompt = picker:_get_prompt()
-
-    actions.close(prompt_bufnr)
-    require("telescope.builtin").find_files {
-      find_command = {
-        "fd",
-        "--type",
-        "file",
-        "--follow",
-        "--hidden",
-        "--no-ignore",
-        "--exclude",
-        "**/{.git,node_modules}/**",
-      },
-      default_text = prompt,
-    }
-  end,
-
-  -- Switch to "Live grep with args" with current prompt retained
-  ["<C-g>"] = function(prompt_bufnr)
-    local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
-    local prompt = picker:_get_prompt()
-    if prompt == "" then
-      return
-    end
-
-    local rg_search_pattern = require("telescope-live-grep-args.helpers").quote(prompt, { -- only quoted patterns work
-      quote_char = '"',
-    })
-    local rg_default_args = string.format(" -g %s -. -L ", RG_GLOB_PATTERN) -- equivalent to: --glob !**/{.git,node_modules}/** --hidden --follow
-    local new_prompt = rg_search_pattern .. rg_default_args
-
-    actions.close(prompt_bufnr)
-    require("telescope").extensions.live_grep_args.live_grep_args {
-      default_text = new_prompt,
-    }
-  end,
 }
+
+-- Switch to "Find all files" with current prompt retained
+local function switch_to_find_all_files(prompt_bufnr)
+  local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+  local prompt = picker:_get_prompt()
+
+  actions.close(prompt_bufnr)
+  require("telescope.builtin").find_files {
+    find_command = {
+      "fd",
+      "--type",
+      "file",
+      "--follow",
+      "--hidden",
+      "--no-ignore",
+      "--exclude",
+      "**/{.git,node_modules}/**",
+    },
+    default_text = prompt,
+  }
+end
+
+-- Switch to "Live grep with args" with current prompt retained
+local function switch_to_live_grep_args(prompt_bufnr)
+  local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
+  local prompt = picker:_get_prompt()
+  if prompt == "" then
+    return
+  end
+
+  local rg_search_pattern = require("telescope-live-grep-args.helpers").quote(prompt, { -- only quoted patterns work
+    quote_char = '"',
+  })
+  local rg_default_args = string.format(" -g %s -. -L ", RG_GLOB_PATTERN) -- equivalent to: --glob !**/{.git,node_modules}/** --hidden --follow
+  local new_prompt = rg_search_pattern .. rg_default_args
+
+  actions.close(prompt_bufnr)
+  require("telescope").extensions.live_grep_args.live_grep_args {
+    default_text = new_prompt,
+  }
+end
 
 local opts = vim.tbl_deep_extend("force", default_opts, {
   defaults = {
@@ -83,9 +83,27 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
   },
 
   pickers = {
+    find_files = {
+      mappings = {
+        i = {
+          ["<C-a>"] = switch_to_find_all_files,
+        },
+        n = {
+          ["<C-a>"] = switch_to_find_all_files,
+        },
+      },
+    },
     live_grep = {
       glob_pattern = { RG_GLOB_PATTERN },
       additional_args = { "--hidden", "--follow" },
+      mappings = {
+        i = {
+          ["<C-g>"] = switch_to_live_grep_args,
+        },
+        n = {
+          ["<C-g>"] = switch_to_live_grep_args,
+        },
+      },
     },
     lsp_references = { show_line = false },
     lsp_definitions = { show_line = false },
