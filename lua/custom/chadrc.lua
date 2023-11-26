@@ -49,6 +49,18 @@ M.ui = {
     },
   },
   hl_override = {
+    TelescopePromptTitle = {
+      fg = "NONE",
+      bg = "NONE",
+    },
+    TelescopeResultsTitle = {
+      fg = "NONE",
+      bg = "NONE",
+    },
+    TelescopePreviewTitle = {
+      fg = "NONE",
+      bg = "NONE",
+    },
     Visual = {
       bg = "#6d5f7c",
     },

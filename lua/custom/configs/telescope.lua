@@ -19,7 +19,7 @@ local common_mappings = {
       return
     end
 
-    local rg_search_pattern = require("telescope-live-grep-args.helpers").quote(prompt, { quote_char = '"' }) -- pattern should be quoted in case of whitespace
+    local rg_search_pattern = require("telescope-live-grep-args.helpers").quote(prompt, { quote_char = '"' }) -- only quoted patterns work
     local rg_default_args = " -L -. -g " .. RG_GLOB_PATTERN .. " " -- equivalent to: --follow --hidden --glob !**/{.git,node_modules}/**
     local new_prompt = rg_search_pattern .. rg_default_args
 
@@ -37,7 +37,7 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
         preview_width = 0.5,
       },
       width = 0.96,
-      height = 0.92,
+      height = 0.93,
     },
     wrap_results = true,
     prompt_prefix = "", -- no prefix icon
