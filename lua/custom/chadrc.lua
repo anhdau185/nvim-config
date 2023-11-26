@@ -49,18 +49,6 @@ M.ui = {
     },
   },
   hl_override = {
-    TelescopePromptTitle = {
-      fg = "NONE",
-      bg = "NONE",
-    },
-    TelescopeResultsTitle = {
-      fg = "NONE",
-      bg = "NONE",
-    },
-    TelescopePreviewTitle = {
-      fg = "NONE",
-      bg = "NONE",
-    },
     Visual = {
       bg = "#6d5f7c",
     },
@@ -97,6 +85,27 @@ M.ui = {
     St_pos_sep = {
       fg = "#2f2e3e",
       bg = "#232232",
+    },
+    TelescopeSelection = {
+      bg = "#2c2b3e",
+    },
+    TelescopeBorder = {
+      fg = "#585b70",
+    },
+    TelescopePromptBorder = {
+      fg = "#585b70",
+    },
+    TelescopePromptTitle = {
+      fg = "#585b70",
+      bg = "NONE",
+    },
+    TelescopeResultsTitle = {
+      fg = "#585b70",
+      bg = "NONE",
+    },
+    TelescopePreviewTitle = {
+      fg = "#585b70",
+      bg = "NONE",
     },
   },
   telescope = {
