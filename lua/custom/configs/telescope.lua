@@ -41,6 +41,20 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
     },
     wrap_results = true,
     prompt_prefix = "", -- no prefix icon
+    get_status_text = function(picker, opts) -- how prompt counter should be displayed
+      local xx = (picker.stats.processed or 0) - (picker.stats.filtered or 0)
+      local yy = picker.stats.processed or 0
+      local status_icon = ""
+
+      if opts and not opts.completed then
+        status_icon = "*"
+      end
+
+      if xx == 0 and yy == 0 then
+        return status_icon
+      end
+      return string.format("%s(%s)", status_icon, xx)
+    end,
     mappings = {
       i = common_mappings,
       n = common_mappings,
