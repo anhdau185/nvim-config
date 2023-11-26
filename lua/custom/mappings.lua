@@ -172,6 +172,12 @@ M.telescope = {
       end,
       "Find all files",
     },
+    ["<leader>fW"] = {
+      function()
+        require("telescope").extensions.live_grep_args.live_grep_args()
+      end,
+      "Live grep with args",
+    },
 
     -- clear all unimportant local marks before showing the mark list to make it cleaner and more readable
     ["<leader>ma"] = {
