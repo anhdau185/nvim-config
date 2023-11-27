@@ -191,10 +191,19 @@ M.telescope = {
   v = {
     ["<leader>fw"] = {
       function()
-        local selected_text = require("custom.utils").get_visual_selection()
-        require("telescope.builtin").live_grep { default_text = selected_text }
+        require("telescope.builtin").live_grep {
+          default_text = require("custom.utils").get_visual_selection(),
+        }
       end,
       "Find visual selection",
+    },
+    ["<leader>fz"] = {
+      function()
+        require("telescope.builtin").current_buffer_fuzzy_find {
+          default_text = require("custom.utils").get_visual_selection(),
+        }
+      end,
+      "Find visual selection in current buffer",
     },
   },
 }

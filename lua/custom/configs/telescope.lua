@@ -112,6 +112,10 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
         },
       },
     },
+    current_buffer_fuzzy_find = {
+      skip_empty_lines = true,
+      results_ts_highlight = false,
+    },
     git_status = {
       mappings = {
         i = {

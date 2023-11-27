@@ -51,6 +51,7 @@ M.rg_exclude_glob = function()
   return string.format("!**/{%s}/**", exclude)
 end
 
+-- when in visual mode, get the currently selected text and then exit visual mode
 M.get_visual_selection = function()
   vim.cmd 'noau normal! "vy"'
   local text = vim.fn.getreg "v"
