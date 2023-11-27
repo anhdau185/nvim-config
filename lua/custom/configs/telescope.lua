@@ -126,6 +126,42 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
         },
       },
     },
+    command_history = {
+      mappings = {
+        i = {
+          ["<C-e>"] = actions.close,
+          ["<C-c>"] = actions.edit_command_line,
+        },
+        n = {
+          ["<C-e>"] = actions.close,
+          ["<C-c>"] = actions.edit_command_line,
+        },
+      },
+    },
+    search_history = {
+      mappings = {
+        i = {
+          ["<C-e>"] = actions.close,
+          ["<C-c>"] = actions.edit_search_line,
+        },
+        n = {
+          ["<C-e>"] = actions.close,
+          ["<C-c>"] = actions.edit_search_line,
+        },
+      },
+    },
+    registers = {
+      mappings = {
+        i = {
+          ["<C-e>"] = actions.close,
+          ["<C-c>"] = actions.edit_register,
+        },
+        n = {
+          ["<C-e>"] = actions.close,
+          ["<C-c>"] = actions.edit_register,
+        },
+      },
+    },
     lsp_references = { show_line = false },
     lsp_definitions = { show_line = false },
   },
