@@ -178,6 +178,12 @@ M.telescope = {
       end,
       "Live grep with args",
     },
+    ["<leader>fq"] = {
+      function()
+        require("telescope.builtin").quickfixhistory()
+      end,
+      "Quickfix history",
+    },
 
     -- clear all unimportant local marks before showing the mark list to make it cleaner and more readable
     ["<leader>ma"] = {
