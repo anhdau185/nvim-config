@@ -188,6 +188,12 @@ M.telescope = {
       "Show global bookmarks",
     },
   },
+  v = {
+    ["<leader>fw"] = {
+      "y<ESC>:Telescope live_grep default_text=<c-r>0<CR>",
+      "Find visual selection (single WORD)",
+    },
+  },
 }
 
 M.gitsigns = {
