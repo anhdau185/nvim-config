@@ -190,8 +190,11 @@ M.telescope = {
   },
   v = {
     ["<leader>fw"] = {
-      "y<ESC>:Telescope live_grep default_text=<c-r>0<CR>",
-      "Find visual selection (single WORD)",
+      function()
+        local selected_text = require("custom.utils").get_visual_selection()
+        require("telescope.builtin").live_grep { default_text = selected_text }
+      end,
+      "Find visual selection",
     },
   },
 }
