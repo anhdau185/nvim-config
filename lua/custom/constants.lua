@@ -18,6 +18,9 @@ M.FD_EXCLUDE = {
 M.RG_EXCLUDE = {
   ".git",
   "node_modules",
+  "build",
+  "dist",
+  "bin",
 }
 
 return M
