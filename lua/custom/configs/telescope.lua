@@ -50,9 +50,7 @@ end
 local opts = vim.tbl_deep_extend("force", default_opts, {
   defaults = {
     layout_config = {
-      horizontal = {
-        preview_width = 0.5,
-      },
+      horizontal = { preview_width = 0.5 },
       width = 0.96,
       height = 0.93,
     },
@@ -116,16 +114,6 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
       skip_empty_lines = true,
       results_ts_highlight = false,
     },
-    git_status = {
-      mappings = {
-        i = {
-          ["<C-s>"] = actions.git_staging_toggle,
-        },
-        n = {
-          ["s"] = actions.git_staging_toggle,
-        },
-      },
-    },
     command_history = {
       mappings = {
         i = {
@@ -159,6 +147,17 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
         n = {
           ["<C-e>"] = actions.close,
           ["<C-c>"] = actions.edit_register,
+        },
+      },
+    },
+    git_status = {
+      initial_mode = "normal",
+      mappings = {
+        i = {
+          ["<C-s>"] = actions.git_staging_toggle,
+        },
+        n = {
+          ["s"] = actions.git_staging_toggle,
         },
       },
     },

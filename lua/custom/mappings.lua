@@ -149,8 +149,8 @@ M.telescope = {
     ["<leader>gr"] = {
       function()
         require("telescope.builtin").lsp_references {
-          default_text = require("custom.utils").path_to_current_buf(),
           include_current_line = false,
+          default_text = require("custom.utils").path_to_current_buf(),
         }
       end,
       "Find references within document",
