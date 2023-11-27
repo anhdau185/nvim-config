@@ -184,6 +184,12 @@ M.telescope = {
       end,
       "Quickfix history",
     },
+    ["<leader>fp"] = {
+      function()
+        require("telescope.builtin").builtin()
+      end,
+      "All builtin pickers",
+    },
 
     -- clear all unimportant local marks before showing the mark list to make it cleaner and more readable
     ["<leader>ma"] = {
@@ -264,6 +270,7 @@ M.disabled = {
     ["<leader>n"] = "",
     ["<leader>rn"] = "",
     ["<leader>b"] = "",
+    ["<leader>fm"] = "",
 
     -- lspconfig
     ["<leader>q"] = "",
