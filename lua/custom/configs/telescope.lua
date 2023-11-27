@@ -34,7 +34,7 @@ local function switch_to_live_grep_args(prompt_bufnr)
   local rg_search_pattern = require("telescope-live-grep-args.helpers").quote(prompt, { -- only quoted patterns work
     quote_char = '"',
   })
-  local rg_default_args = string.format(" -g %s -. -L ", RG_GLOB_PATTERN) -- equivalent to: --glob !**/{.git,node_modules}/** --hidden --follow
+  local rg_default_args = string.format(" -g %s -L -. ", RG_GLOB_PATTERN) -- equivalent to: --glob !**/{.git,node_modules}/** --follow --hidden
   local new_prompt = rg_search_pattern .. rg_default_args
 
   actions.close(prompt_bufnr)
@@ -98,7 +98,7 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
     },
     live_grep = {
       glob_pattern = { RG_GLOB_PATTERN },
-      additional_args = { "--hidden", "--follow" },
+      additional_args = { "--follow", "--hidden" },
       mappings = {
         i = {
           ["<C-g>"] = switch_to_live_grep_args,

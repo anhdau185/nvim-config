@@ -90,10 +90,10 @@ M.ui = {
       bg = "#2c2b3e",
     },
     TelescopeBorder = {
-      fg = "#494d64",
+      fg = "#484b5c",
     },
     TelescopePromptBorder = {
-      fg = "#494d64",
+      fg = "#484b5c",
     },
     TelescopePromptTitle = {
       fg = "#585b70",
