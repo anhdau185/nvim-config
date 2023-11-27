@@ -1,6 +1,9 @@
 local actions = require "telescope.actions"
+local utils = require "custom.utils"
 local default_opts = require "plugins.configs.telescope"
-local RG_GLOB_PATTERN = "!**/{.git,node_modules}/**"
+
+local fd_exclude_glob = utils.fd_exclude_glob()
+local rg_exclude_glob = utils.rg_exclude_glob()
 
 -- Switch to "Find all files" with current prompt retained
 local function switch_to_find_all_files(prompt_bufnr)
@@ -17,7 +20,7 @@ local function switch_to_find_all_files(prompt_bufnr)
       "--hidden",
       "--no-ignore",
       "--exclude",
-      "**/{.git,node_modules}/**",
+      fd_exclude_glob,
     },
     default_text = prompt,
   }
@@ -34,7 +37,7 @@ local function switch_to_live_grep_args(prompt_bufnr)
   local rg_search_pattern = require("telescope-live-grep-args.helpers").quote(prompt, { -- only quoted patterns work
     quote_char = '"',
   })
-  local rg_default_args = string.format(" -g %s -L -. ", RG_GLOB_PATTERN) -- equivalent to: --glob !**/{.git,node_modules}/** --follow --hidden
+  local rg_default_args = string.format(" -g %s -L -. ", rg_exclude_glob) -- equivalent to: --glob "..." --follow --hidden
   local new_prompt = rg_search_pattern .. rg_default_args
 
   actions.close(prompt_bufnr)
@@ -97,7 +100,7 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
       },
     },
     live_grep = {
-      glob_pattern = { RG_GLOB_PATTERN },
+      glob_pattern = { rg_exclude_glob },
       additional_args = { "--follow", "--hidden" },
       mappings = {
         i = {

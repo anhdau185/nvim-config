@@ -166,7 +166,7 @@ M.telescope = {
             "--hidden",
             "--no-ignore",
             "--exclude",
-            "**/{.git,node_modules}/**",
+            require("custom.utils").fd_exclude_glob(),
           },
         }
       end,

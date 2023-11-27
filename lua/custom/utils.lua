@@ -38,7 +38,17 @@ M.is_proj_whitelisted = function()
   if proj_name == nil or proj_name == "" then
     return false
   end
-  return vim.tbl_contains(require("custom.projects").WHITELIST, proj_name)
+  return vim.tbl_contains(require("custom.constants").WHITELIST, proj_name)
+end
+
+M.fd_exclude_glob = function()
+  local exclude = table.concat(require("custom.constants").FD_EXCLUDE, ",")
+  return string.format("**/{%s}/**", exclude)
+end
+
+M.rg_exclude_glob = function()
+  local exclude = table.concat(require("custom.constants").RG_EXCLUDE, ",")
+  return string.format("!**/{%s}/**", exclude)
 end
 
 return M
