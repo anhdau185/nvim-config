@@ -27,6 +27,7 @@ local function switch_to_find_all_files(prompt_bufnr)
 end
 
 -- Switch to "Live grep with args" with current prompt retained
+-- Completely unfiltered search, does not respect .gitignore
 local function switch_to_live_grep_args(prompt_bufnr)
   local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
   local prompt = picker:_get_prompt()
@@ -37,7 +38,7 @@ local function switch_to_live_grep_args(prompt_bufnr)
   local rg_search_pattern = require("telescope-live-grep-args.helpers").quote(prompt, { -- only quoted patterns work
     quote_char = '"',
   })
-  local rg_default_args = string.format(" -g %s -L -. ", rg_exclude_glob) -- equivalent to: --glob "..." --follow --hidden
+  local rg_default_args = string.format(" -g %s -L -uu ", rg_exclude_glob)
   local new_prompt = rg_search_pattern .. rg_default_args
 
   actions.close(prompt_bufnr)
