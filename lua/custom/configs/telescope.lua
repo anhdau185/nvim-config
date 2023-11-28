@@ -160,8 +160,14 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
         },
       },
     },
-    lsp_references = { show_line = false },
-    lsp_definitions = { show_line = false },
+    lsp_references = {
+      show_line = false,
+      initial_mode = "normal",
+    },
+    lsp_definitions = {
+      show_line = false,
+      initial_mode = "normal",
+    },
   },
 })
 
