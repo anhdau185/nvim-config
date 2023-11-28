@@ -5,7 +5,7 @@ M.WHITELIST = {
   "nvim",
   "frontend-core",
   "employment-hero",
-  "ipsniffer",
+  "ipscanner",
 }
 
 -- List of folders to exclude from telescope.builtin.find_files
