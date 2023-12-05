@@ -114,6 +114,14 @@ M.telescope = {
       end,
       "Git status",
     },
+    ["<leader>gt"] = {
+      function()
+        require("telescope.builtin").git_status {
+          default_text = require("custom.utils").path_to_current_buf(),
+        }
+      end,
+      "Git status current file",
+    },
     ["gm"] = {
       function()
         require("telescope.builtin").git_commits()
