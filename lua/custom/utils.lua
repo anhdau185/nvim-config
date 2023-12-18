@@ -11,6 +11,13 @@ M.path_to_current_buf = function()
   return plenary.path:new(buf_name):make_relative()
 end
 
+M.path_to_current_dir = function()
+  local plenary = require "plenary"
+  local buf_name = vim.api.nvim_buf_get_name(0)
+
+  return plenary.path:new(buf_name):make_relative():gsub("/[^/]+$", "/")
+end
+
 M.get_cursor_pos = function()
   local ln, col = table.unpack(vim.api.nvim_win_get_cursor(0))
   local is_blank_line = vim.api.nvim_get_current_line() == ""
