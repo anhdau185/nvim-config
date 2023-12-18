@@ -14,6 +14,7 @@ require("conform").setup {
     async = false,
     lsp_fallback = true,
     timeout_ms = 800,
+    quiet = true,
   },
 }
 
@@ -21,6 +22,5 @@ vim.keymap.set("n", "<leader>mp", function()
   conform.format {
     async = true,
     lsp_fallback = true,
-    timeout_ms = 800,
   }
 end, { desc = "Format document" })
