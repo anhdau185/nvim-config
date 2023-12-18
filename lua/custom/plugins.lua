@@ -112,12 +112,11 @@ local plugins = {
     event = "VeryLazy",
     init = false,
   },
-  { -- make gitsigns truly lazy-loaded
+  { -- override default gitsigns opts
     "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
-    init = false,
-    config = function()
-      require "custom.configs.gitsigns"
+    opts = function()
+      return require "custom.configs.gitsigns"
     end,
   },
   {
