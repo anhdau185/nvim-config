@@ -4,7 +4,7 @@ M.is_dir = function(path)
   return vim.fn.isdirectory(path) ~= 0
 end
 
-M.path_to_current_buf = function()
+M.path_to_current_file = function()
   local plenary = require "plenary"
   local buf_name = vim.api.nvim_buf_get_name(0)
 

@@ -24,7 +24,7 @@ M.general = {
     -- copy relative path to current file
     ["<leader>cp"] = {
       function()
-        local rel_path = require("custom.utils").path_to_current_buf()
+        local rel_path = require("custom.utils").path_to_current_file()
         vim.fn.setreg("+", rel_path)
         print("Path copied: " .. rel_path)
       end,
@@ -117,7 +117,7 @@ M.telescope = {
     ["<leader>gt"] = {
       function()
         require("telescope.builtin").git_status {
-          default_text = require("custom.utils").path_to_current_buf(),
+          default_text = require("custom.utils").path_to_current_file(),
         }
       end,
       "Git status current file",
@@ -158,7 +158,7 @@ M.telescope = {
       function()
         require("telescope.builtin").lsp_references {
           include_current_line = false,
-          default_text = require("custom.utils").path_to_current_buf(),
+          default_text = require("custom.utils").path_to_current_file(),
         }
       end,
       "Find references within document",

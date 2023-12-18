@@ -10,7 +10,7 @@ vim.opt.fillchars:append { diff = "╱" }
 vim.keymap.set({ "n", "x", "o" }, "$", "g_", { desc = "" })
 vim.keymap.set({ "n" }, "<C-g>", function()
   local utils = require "custom.utils"
-  local rel_path = utils.path_to_current_buf()
+  local rel_path = utils.path_to_current_file()
   local ln, col = utils.get_cursor_pos()
   local display_path = string.format("%s:%s:%s", rel_path, ln, col)
   print(display_path)

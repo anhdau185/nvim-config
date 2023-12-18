@@ -477,7 +477,7 @@ end
 
 local function openDiffviewForCurrentFile()
   local utils = require "custom.utils"
-  local path_to_file = utils.path_to_current_buf()
+  local path_to_file = utils.path_to_current_file()
   local open_cmd = "DiffviewOpen -- " .. path_to_file
 
   vim.cmd "tabo"
