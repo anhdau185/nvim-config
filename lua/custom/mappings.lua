@@ -180,6 +180,24 @@ M.telescope = {
       end,
       "Find all files",
     },
+    ["<leader>fF"] = {
+      function()
+        require("telescope.builtin").find_files {
+          default_text = require("custom.utils").path_to_current_dir(),
+          find_command = {
+            "fd",
+            "--type",
+            "file",
+            "--follow",
+            "--hidden",
+            "--no-ignore",
+            "--exclude",
+            require("custom.utils").fd_exclude_glob(),
+          },
+        }
+      end,
+      "Find files within current directory",
+    },
     ["<leader>fW"] = {
       function()
         require("telescope").extensions.live_grep_args.live_grep_args()
