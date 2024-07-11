@@ -6,7 +6,7 @@ local opts = vim.tbl_deep_extend("force", default_opts, {
     "typescript-language-server",
     "eslint-lsp",
     "rust-analyzer",
-    "prettierd",
+    "prettier",
     "stylua",
     "rustfmt",
   },

@@ -2,11 +2,11 @@ local conform = require "conform"
 
 require("conform").setup {
   formatters_by_ft = {
-    javascript = { "prettierd" },
-    typescript = { "prettierd" },
-    javascriptreact = { "prettierd" },
-    typescriptreact = { "prettierd" },
-    json = { "prettierd" },
+    javascript = { "prettier" },
+    typescript = { "prettier" },
+    javascriptreact = { "prettier" },
+    typescriptreact = { "prettier" },
+    json = { "prettier" },
     lua = { "stylua" },
     rust = { "rustfmt" },
   },
